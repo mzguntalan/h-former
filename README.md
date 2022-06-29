@@ -229,7 +229,7 @@ Since we can see the patches in colors, we can infer what `H-Former` thinks as a
 ### Very similar letters for its uppercase and lowercase glyphs
 For example, refer to the uppercase 'W' and lowercase 'w' glyphs, most fonts would have these very similarly styled, 
 with a variation in scale (scale may not be evident in the dataset, since I deliberately scaled each glyph so that for
-a box whose 2 opposite corners are $(-1,-1)$ and $(1,1)$ either a glyph fills it along the horizontal direction without
+a box whose 2 opposite corners are $\(-1,-1\)$ and $\(1,1\)$ either a glyph fills it along the horizontal direction without
 overextending along the vertical direction or fills it along the vertical direction without overextending along the
 other direction). Notice that the colors indicate that which parts `H-Former` thinks are analogous which is very obvious
 in this example of 'w'. Other exmaples of this would be on 'C'-'c', 'P'-'p', among others.
