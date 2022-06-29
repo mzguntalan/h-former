@@ -218,7 +218,8 @@ is its glyph reconstruction for the code $\mu^\prime$ and identity $g$.
 
 # Discussion
 ## Decoders Learned to Be A Patch
-Similar to what happened to Canonical Capusles, the decoders have each learned to become a specific part of each glyph
+Similar to what happened to [Canonical Capsules](https://arxiv.org/pdf/2012.04718.pdf), 
+the decoders have each learned to become a specific part of each glyph
 which we can refer to as a patch. I use 32 patches/decoders for this and this is the 32 colors you see on the animation.
 This means that on the glyph of "A" and "B" (and others) the same colored points came from the same decoder, albeit
 with different glyph identities supplied. 
@@ -243,7 +244,7 @@ in the similarly colors in their patchings. This is why I think of this pair as 
 other - the P is an R with a very very short other leg.
 
 You may notice this phenomenon on other pairs as well: some of them would be
-'E'-'F', 'C'-'G', 'J'-'I. 
+'E'-'F', 'C'-'G', 'J'-'I'. 
 
 ### Completely different glyphs
 An even more bizzare observation to make, would be comparing glyphs that are wildly different, say a 'Q' and a 'K'. 
