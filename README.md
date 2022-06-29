@@ -329,7 +329,7 @@ Every batch consists of 8 fonts, which means $8\times52$ glyphs in total.
   author = {Untalan, Marko Zolo G.},
   month = {6},
   title = {{H-Former}},
-  url = {TODO},
+  url = {https://github.com/mzguntalan/h-former},
   year = {2022}
 }
 ```
