@@ -1,0 +1,21 @@
+class Config:
+    embed_dim: int = 256
+    num_holder_vars: int = 32
+    depth_transformer: int = 3
+    num_heads_transformer: int = 8
+    num_patches: int = 32
+    num_glyphs: int = 52
+    num_points: int = 128
+    num_fonts_per_batch: int = 8
+    seed: int = 64
+    optimizer_common_schedule_hyper: int = 256
+    optimizer_common_schedule_warmup_steps: int = 4000
+    train_num_epochs: int = 300
+    model_weights_directory: str = "./checkpoints/"
+    model_weights_filename: str = "h-former-weights"
+    animation_dpi: int = 72
+    animation_num_fonts: int = 32
+    animation_num_betweens: int = 20
+    animation_directory: str = "./docs/images/"
+    animation_name: str = "h-former-font-generation-demo"
+    dataset_filename: str = "./data/fonts.tfrecords"
