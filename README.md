@@ -3,6 +3,30 @@ Here is a gif showing it transition through many 32 fonts with 20 in betweens pe
 
 ![animated-font-tweening-by-h-former](docs/images/h-former-font-generation-demo.gif)
 
+# Contents
+1. [Overview](#overview)
+   1. [What is a Glyph](#glyph)
+   2. [What is a font](#font)
+2. [My Inspiration](#inspiration-and-motivation)
+3. [Setup](#setup)
+   1. [Train H-Former on terminal](#training)
+   2. [Generate an animation like the on above](#generating-animation)
+   3. [Implicit requirements](#other-implicit-requirements-caveats)
+4. [Dataset](#dataset)
+5. [Notation](#notation)
+6. [Conception of Design](#conception-of-design)
+   1. [Patches and Point Net](#patches-and-point-net)
+   2. [Transformer](#encoding-and-the-transformer)
+   3. [Decoding with multiple decoders](#decoding-with-atlas-v2)
+7. [Discussion](#discussion)
+   1. [Analogous Parts](#analougous-parts)
+      1. [On very similar glyphs](#very-similar-letters-for-its-uppercase-and-lowercase-glyphs)
+      2. [On glyphs that are degenerate version of another](#glyphs-that-are-degenerate-versions-of-another)
+   2. [Transitions and Tweening](#transitions-and-tweening)
+   3. [What does 2 or more fonts look like whne combined](#what-does-2-or-more-fonts-look-like-when-combined)
+8. [Implementation Details](#implementation details)
+9. [About the author and details](#author-details-and-citing-this-project)
+
 # Overview
 `H-Former` is neural network designed to generate in-between fonts by modeling the latent space of fonts/glyphs which 
 allows it to combine several fonts into one called an `in between font` of the given fonts. It is based on a Variational
@@ -303,7 +327,7 @@ shape $\[4,2+256\]$ then use an MLP with the following layers:
 - features=256, activation=relu
 - features=2, activation=tanh
 
-## Training
+## Training Details
 I train using the adam optimizer with the same learning schedule as used in 
 [Attention Is All You Need](https://arxiv.org/pdf/1706.03762.pdf) which is also shown here in the 
 [tensorflow docs](https://www.tensorflow.org/text/tutorials/transformer) - additionally, I clip the gradients so that 
