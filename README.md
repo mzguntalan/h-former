@@ -45,7 +45,7 @@ Encoder; 3) and an adjustment loss the punishes the decoder for have big weights
 
 ## Glyph
 A glyph a character, usually purposeful to humans. In this context we refer to the upper case and lower case letters 
-$\[A-Z\]\[a-z\]$ as the 52 glyphs ids or glyph identities (a certain glyph can be identified as an ‘A’, ‘b’, etc.
+$\[A-Z\]\[a-z\]$ as the 52 glyphs ids or glyph identities (a certain glyph can be identified as an ‘A', ‘b', etc.
 
 ### Glyphs as a Point Sequence
 A glyph is closed figure, possibly with wholes, but for the purposes of this project we are going to view them a point 
@@ -65,7 +65,7 @@ generator that produces mostly legible fonts.
 ## Font Tweening and VAE
 There are two popular ways of generation: VAE and GAN architectures. This project makes use of the VAE architecture 
 to enable `H-former` to “add” fonts together. Roughly speaking, if I had two fonts $f_1$ and $f_2$, a VAE would 
-allow us to to $50\%f_1 + 50\%f_2$ - this could also be done with an arbitrary number of fonts. This means font 
+allow us to do $50\%f_1 + 50\%f_2$ - this could also be done with an arbitrary number of fonts. This means font 
 generation happens by producing in-between fonts which I would call here as `font tweening`.
 
 # Setup
@@ -102,9 +102,9 @@ python ./training/train.py
 ```
 
 ## Generating animations
-You can generate animations like the one shown in Section Results, by using the script on creating animations 
+You can generate animations like the one shown in the beginning, by using the script on creating animations 
 (`./visuzalization/create_animation.py`). This 
-script loads a random set of fonts fromt the dataset and tweens between them pair (this also loops the last font to 
+script loads a random set of fonts from the dataset and tweens between them pair (this also loops the last font to 
 the first font to create a seamless transition). However, if you want to create specific animations, refer to that 
 script and the module ./visualization/animation to create those.
 
@@ -165,7 +165,7 @@ then turns each patch of grid of pixels into just one vector which then a transf
 of patch embeddings. 
 
 Using the same spirit, Given a sequence of points $P: \[s, 2\]$, I separate them into patches of $p$ points as 
-$P’:\[p,\frac{s}{p},2\]$. To each patch $P’_i: \[s\div p, 2\]$, I use a 
+$P\prime:\[p,\frac{s}{p},2\]$. To each patch $P\prime_i: \[s\div p, 2\]$, I use a 
 [simplified point net](https://arxiv.org/pdf/1612.00593.pdf) called `SimplifiedPointNet` 
 (I give a name to this, so that I may detail its architecture in a latter section called Implementation Details) 
 to turn the patches into vectors $V_i: \[e\]$. 
@@ -191,12 +191,12 @@ Together, we have:
 
 We concatenate $V_G, v_g$ and $H$ at their first dimension and get set of context vectors $C: \[h+1+p\]$. 
 
-We then use a transformer called `TransformerEncoder` on $C$ and get back contextualized vectors $C’$. We then take 
-what had become of the first holder variable $H’_1$ and apply an MLP called `MLP_holder` after which we apply an MLP 
-`MLP_mu` and `MLP_logvar` to $H’_1$ and obtain $\mu: \[e\]$ and $\ln\sigma^2: \[e\]$.
+We then use a transformer called `TransformerEncoder` on $C$ and get back contextualized vectors $C\prime$. We then take 
+what had become of the first holder variable $H\prime_1$ and apply an MLP called `MLP_holder` after which we apply an MLP 
+`MLP_mu` and `MLP_logvar` to $H\prime_1$ and obtain $\mu: \[e\]$ and $\ln\sigma^2: \[e\]$.
 
 ## Reparametrization
-As with [VAEs](https://arxiv.org/pdf/1906.02691.pdf), we use the reparametrization trick on $\mu$ and $\ln\sigma^2$ 
+As with [VAEs](https://arxiv.org/pdf/1906.02691.pdf), we use the reparametrization trick on $\mu$ and $\ln \sigma^2$ 
 whenever we are in training, and just use $\mu$, otherwise.
 
 ## Decoding with Atlas V2
@@ -209,12 +209,12 @@ albeit in the [paper on learned elementary structures](https://arxiv.org/pdf/190
 I do something similar with what they have done in [Canonical Capsules](https://arxiv.org/pdf/2012.04718.pdf) 
 wherein they used several Atlas V2 as decoders. 
 
-Given the code vector for the glyph $\mu’:\[e\]$ and the identity $g:\[1\]$, I first apply a `GlyphEmbed_decoder` to 
+Given the code vector for the glyph $\mu\prime:\[e\]$ and the identity $g:\[1\]$, I first apply a `GlyphEmbed_decoder` to 
 $g$ to obtain a vector $v_g: \[e\]$. I then concatenate the two to get $c: \[e+e\]$. With $c$ I use one Atlas V2 net 
 to decode $p$ points ($p$ refers to the number of patches). 
 
 Since there are $s$ total number of points in a glyph, I use $\frac{s}{p}$ independent Atlas V2 nets whose aggregate 
-is its glyph reconstruction for the code $\mu’$ and identity $g$. 
+is its glyph reconstruction for the code $\mu\prime$ and identity $g$. 
 
 # Discussion
 ## Decoders Learned to Be A Patch
@@ -337,7 +337,7 @@ I train on 300 epochs with the following losses:
 
 - `main`: a main loss that is computed as the [chamfer distance](http://3ddl.cs.princeton.edu/2016/slides/su.pdf) between the 
 - `kl_div`: original glyphs and the reconstructions [KL divergence loss](https://arxiv.org/pdf/1906.02691.pdf)
-- `adj`: adjustment loss that punishes the Atlas V2’s layers for having big weights - this encourages the adjustments to be 
+- `adj`: adjustment loss that punishes the Atlas V2's layers for having big weights - this encourages the adjustments to be 
 simpler; this is the sum of the absolute values and of the square values of these weights
 
 I combine the above losses into one loss by the following weights $L = 1000main + kl_{div} + adj$
