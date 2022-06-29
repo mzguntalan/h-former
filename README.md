@@ -165,7 +165,7 @@ then turns each patch of grid of pixels into just one vector which then a transf
 of patch embeddings. 
 
 Using the same spirit, Given a sequence of points $P: \[s, 2\]$, I separate them into patches of $p$ points as 
-$P\prime:\[p,\frac{s}{p},2\]$. To each patch $P\prime_i: \[s\div p, 2\]$, I use a 
+$P^\prime:\[p,\frac{s}{p},2\]$. To each patch $P^\prime_i: \[s\div p, 2\]$, I use a 
 [simplified point net](https://arxiv.org/pdf/1612.00593.pdf) called `SimplifiedPointNet` 
 (I give a name to this, so that I may detail its architecture in a latter section called Implementation Details) 
 to turn the patches into vectors $V_i: \[e\]$. 
@@ -191,9 +191,9 @@ Together, we have:
 
 We concatenate $V_G, v_g$ and $H$ at their first dimension and get set of context vectors $C: \[h+1+p\]$. 
 
-We then use a transformer called `TransformerEncoder` on $C$ and get back contextualized vectors $C\prime$. We then take 
-what had become of the first holder variable $H\prime_1$ and apply an MLP called `MLP_holder` after which we apply an MLP 
-`MLP_mu` and `MLP_logvar` to $H\prime_1$ and obtain $\mu: \[e\]$ and $\ln\sigma^2: \[e\]$.
+We then use a transformer called `TransformerEncoder` on $C$ and get back contextualized vectors $C^\prime$. We then take 
+what had become of the first holder variable $H^\prime_1$ and apply an MLP called `MLP_holder` after which we apply an MLP 
+`MLP_mu` and `MLP_logvar` to $H^\prime_1$ and obtain $\mu: \[e\]$ and $\ln\sigma^2: \[e\]$.
 
 ## Reparametrization
 As with [VAEs](https://arxiv.org/pdf/1906.02691.pdf), we use the reparametrization trick on $\mu$ and $\ln \sigma^2$ 
@@ -209,12 +209,12 @@ albeit in the [paper on learned elementary structures](https://arxiv.org/pdf/190
 I do something similar with what they have done in [Canonical Capsules](https://arxiv.org/pdf/2012.04718.pdf) 
 wherein they used several Atlas V2 as decoders. 
 
-Given the code vector for the glyph $\mu\prime:\[e\]$ and the identity $g:\[1\]$, I first apply a `GlyphEmbed_decoder` to 
+Given the code vector for the glyph $\mu^\prime:\[e\]$ and the identity $g:\[1\]$, I first apply a `GlyphEmbed_decoder` to 
 $g$ to obtain a vector $v_g: \[e\]$. I then concatenate the two to get $c: \[e+e\]$. With $c$ I use one Atlas V2 net 
 to decode $p$ points ($p$ refers to the number of patches). 
 
 Since there are $s$ total number of points in a glyph, I use $\frac{s}{p}$ independent Atlas V2 nets whose aggregate 
-is its glyph reconstruction for the code $\mu\prime$ and identity $g$. 
+is its glyph reconstruction for the code $\mu^\prime$ and identity $g$. 
 
 # Discussion
 ## Decoders Learned to Be A Patch
