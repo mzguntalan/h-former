@@ -1,4 +1,7 @@
 # H-Former
+Here is a gif showing it transition through many 32 fonts with 20 in betweens per pair.
+
+![animated-font-tweening-by-h-former](docs/images/h-former-font-generation-demo.gif)
 
 # Overview
 `H-Former` is neural network designed to generate in-between fonts by modeling the latent space of fonts/glyphs which 
@@ -40,11 +43,6 @@ There are two popular ways of generation: VAE and GAN architectures. This projec
 to enable `H-former` to “add” fonts together. Roughly speaking, if I had two fonts $f_1$ and $f_2$, a VAE would 
 allow us to to $50\%f_1 + 50\%f_2$ - this could also be done with an arbitrary number of fonts. This means font 
 generation happens by producing in-between fonts which I would call here as `font tweening`.
-
-## Results
-Here is a gif showing it transition through many 32 fonts with 20 in betweens per pair.
-
-![animated-font-tweening-by-h-former](docs/images/h-former-font-generation-demo.gif)
 
 # Setup
 A conda environment config file has been provided. Run the following command to create the environment called `h-former`.
