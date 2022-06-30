@@ -23,7 +23,7 @@ Here is a gif showing it transition through many 32 fonts with 20 in betweens pe
       1. [On very similar glyphs](#very-similar-letters-for-its-uppercase-and-lowercase-glyphs)
       2. [On glyphs that are degenerate version of another](#glyphs-that-are-degenerate-versions-of-another)
    2. [Transitions and Tweening](#transitions-and-tweening)
-   3. [What does 2 or more fonts look like whne combined](#what-does-2-or-more-fonts-look-like-when-combined)
+   3. [What does 2 or more fonts look like when combined](#what-does-2-or-more-fonts-look-like-when-combined)
 8. [Implementation Details](#implementation-details)
 9. [About the author and details](#author-details-and-citing-this-project)
 
