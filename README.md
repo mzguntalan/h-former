@@ -1,5 +1,5 @@
 # H-Former
-Here is a gif showing it transition through many 32 fonts with 20 in betweens per pair.
+Here is a gif showing it transition through many 32 fonts with 20 in betweens per pair. (It might take a while for it to load, it is inside `./docs/images`)
 
 ![animated-font-tweening-by-h-former](docs/images/h-former-font-generation-demo.gif)
 
