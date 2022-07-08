@@ -352,7 +352,7 @@ Every batch consists of 8 fonts, which means $8\times52$ glyphs in total.
 
 # Author Details and Citing this project
 ```shell
-@software{Untalan_H_Former_2020,
+@software{Untalan_H_Former_2022,
   author = {Untalan, Marko Zolo G.},
   month = {6},
   title = {{H-Former}},
