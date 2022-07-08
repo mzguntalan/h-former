@@ -284,6 +284,8 @@ This is a round of several MLP/Norm layers as follows:
 - LayerNorm
 - features=256, activation=relu
 
+This is followed by a max pooling across the $-2$ dimension or the second to the last dimension.
+
 ## GlyphEmbed_Encoder and GlyphEmbed_Decoder
 This is a round of MLP layers as follows:
 
